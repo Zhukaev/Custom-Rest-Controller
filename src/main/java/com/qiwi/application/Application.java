@@ -1,9 +1,5 @@
-package com.qiwi.Application;
+package com.qiwi.application;
 
-import com.qiwi.servlet.dispatcher.DispatcherServlet;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

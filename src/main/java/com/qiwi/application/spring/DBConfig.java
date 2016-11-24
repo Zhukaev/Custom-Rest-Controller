@@ -1,4 +1,4 @@
-package com.qiwi.Application.spring;
+package com.qiwi.application.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

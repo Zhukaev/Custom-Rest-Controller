@@ -1,6 +1,6 @@
 package com.qiwi.controller;
 
-import com.qiwi.Application.Application;
+import com.qiwi.application.Application;
 import com.qiwi.user.model.User;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,7 +22,7 @@ import java.util.List;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class)
-public class UserControllerTest {
+public class UserControllerImplTest {
 
     public static final String URL = "http://localhost:8080/users";
     private RestTemplate restTemplate = new RestTemplate();

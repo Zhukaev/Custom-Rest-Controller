@@ -25,7 +25,7 @@ public class RequestMappingService {
         return null;
     }
 
-    public void addMethodDefine(MethodDefinition newMethodDefine, String path, String httpMethod) {
+    public void addMethodDefinition(MethodDefinition newMethodDefine, String path, String httpMethod) {
         if (methods.size() == 0) {
             RequestMappingImpl newRequestMapping = new RequestMappingImpl(path);
             newRequestMapping.getMethodMap().put(httpMethod, newMethodDefine);

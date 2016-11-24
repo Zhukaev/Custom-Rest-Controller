@@ -1,4 +1,4 @@
-package com.qiwi.Application.spring;
+package com.qiwi.application.spring;
 
 import com.qiwi.servlet.dispatcher.DispatcherServlet;
 import org.eclipse.jetty.server.Server;

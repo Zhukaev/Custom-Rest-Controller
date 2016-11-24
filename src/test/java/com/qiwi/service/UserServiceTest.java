@@ -2,7 +2,7 @@ package com.qiwi.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qiwi.Application.Application;
+import com.qiwi.application.Application;
 import com.qiwi.user.exeption.DataValidationException;
 import com.qiwi.user.exeption.DuplicatePnoneException;
 import com.qiwi.user.exeption.NotFoundUserException;
