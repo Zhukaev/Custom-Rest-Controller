@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
-public class ConverterConfig{
+public class ConverterConfig {
     @Bean
     public ConversionService getConversionService() {
         ConversionServiceFactoryBean bean = new ConversionServiceFactoryBean();

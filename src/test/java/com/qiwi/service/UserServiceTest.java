@@ -1,12 +1,14 @@
 package com.qiwi.service;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qiwi.Application.Application;
-import com.qiwi.appwithcustomrestcontroller.exeption.DataValidationException;
-import com.qiwi.appwithcustomrestcontroller.exeption.DuplicatePnoneException;
-import com.qiwi.appwithcustomrestcontroller.exeption.NotFoundUserException;
-import com.qiwi.appwithcustomrestcontroller.model.User;
-import com.qiwi.appwithcustomrestcontroller.service.UserService;
+import com.qiwi.user.exeption.DataValidationException;
+import com.qiwi.user.exeption.DuplicatePnoneException;
+import com.qiwi.user.exeption.NotFoundUserException;
+import com.qiwi.user.model.User;
+import com.qiwi.user.service.UserService;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,15 +17,25 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.IOException;
 import java.util.List;
 
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class)
 public class UserServiceTest {
 
     @Autowired
     UserService userService;
+
+    @After
+    public void afterEachTest() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<User> users = userService.getAll();
+        for (User user : users) {
+            userService.delete(user.getId());
+        }
+    }
 
     @Test
     public void createNewUserWithGoodFields() {
@@ -129,7 +141,7 @@ public class UserServiceTest {
         userService.create(new User("89121238765", "Cc", "Cc"));
         userService.create(new User("89131238765", "Dd", "Dd"));
         List users = userService.getAll();
-        Assert.assertEquals(4,users.size());
+        Assert.assertEquals(4, users.size());
     }
 
     @Test
