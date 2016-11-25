@@ -9,21 +9,14 @@ import com.qiwi.user.model.User;
 
 import java.util.List;
 
-@Audit
-@QiwiRestController
 public interface UserController {
-    @QiwiRequestMapping(path = "/users", method = "GET")
     List getUsers();
 
-    @QiwiRequestMapping(path = "/users/([0-9]+)", method = "GET")
-    User getUser(@QiwiPathVariable Long id);
+    User getUser(Long id);
 
-    @QiwiRequestMapping(path = "/users/([0-9]+)", method = "DELETE")
-    void deleteUser(@QiwiPathVariable Long id);
+    void deleteUser(Long id);
 
-    @QiwiRequestMapping(path = "/users/([0-9]+)", method = "PUT")
-    User updateUser(@QiwiPathVariable Long id, @QiwiRequestBody User user);
+    User updateUser(Long id, User user);
 
-    @QiwiRequestMapping(path = "/users", method = "POST")
-    User createUser(@QiwiRequestBody User user);
+    User createUser(User user);
 }
