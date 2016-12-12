@@ -32,8 +32,6 @@ public class RequestMappingService {
             this.methods.add(newRequestMapping);
         } else {
             for (RequestMapping requestMapping : methods) {
-                //Matcher matcher = requestMapping.getPath().matcher(path);
-                //System.out.println(requestMapping.getPath() + " " + path);
                 if (path.equals(requestMapping.getPath().toString())) {
                     requestMapping.getMethodMap().put(httpMethod, newMethodDefine);
                     return;

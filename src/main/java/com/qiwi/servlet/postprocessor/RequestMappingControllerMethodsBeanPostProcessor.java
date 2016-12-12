@@ -37,30 +37,6 @@ public class RequestMappingControllerMethodsBeanPostProcessor implements BeanPos
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean.getClass().getAnnotation(QiwiRestController.class) != null) {
             this.originalBean.put(beanName, bean);
-
-            /*Method[] methods = bean.getClass().getDeclaredMethods();
-
-            for (Method method : methods) {
-                this.method = method;
-                List<RequestParam> params = new ArrayList<RequestParam>();
-
-                QiwiRequestMapping annotationQiwiRequestMapping = method.getAnnotation(QiwiRequestMapping.class);
-                if (annotationQiwiRequestMapping != null) {
-                    this.httpMethod = annotationQiwiRequestMapping.method();
-                    this.path = annotationQiwiRequestMapping.path();
-                }
-                Annotation[][] methodArgsAnnotations = method.getParameterAnnotations();
-                Parameter[] parameters = method.getParameters();
-                for (Parameter parameter : parameters) {
-                    if (parameter.isAnnotationPresent(QiwiPathVariable.class)) {
-                        params.add(new com.qiwi.servlet.requestparam.PathVariable(parameter.getType()));
-                    } else if (parameter.isAnnotationPresent(QiwiRequestBody.class)) {
-                        params.add(new com.qiwi.servlet.requestparam.RequestBody(parameter.getType()));
-                    }
-                }
-                MethodDefinition newMethodDefinition = new MethodDefinition(this.originalBean, this.method, params);
-                requestMappingService.addMethodDefinition(newMethodDefinition, this.path, this.httpMethod);
-            }*/
         }
         return bean;
     }

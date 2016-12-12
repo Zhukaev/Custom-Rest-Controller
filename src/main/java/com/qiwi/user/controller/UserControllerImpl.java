@@ -8,12 +8,14 @@ import com.qiwi.servlet.annotation.requestmapping.QiwiRequestMapping;
 import com.qiwi.servlet.annotation.requestmapping.QiwiRestController;
 import com.qiwi.servlet.annotation.requestmapping.QiwiPathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.List;
 
 @Audit
+@EnableAspectJAutoProxy
 @QiwiRestController
-public class UserControllerImpl implements UserController{
+public class UserControllerImpl /* implements UserController*/{
 
     private final UserService userService;
 
@@ -22,34 +24,34 @@ public class UserControllerImpl implements UserController{
         this.userService = userService;
     }
 
-    @Override
+ //   @Override
+    @Audit
     @QiwiRequestMapping(path = "/users", method = "GET")
     public List getUsers() {
         return userService.getAll();
     }
 
-    @Override
+//    @Override
     @QiwiRequestMapping(path = "/users/([0-9]+)", method = "GET")
     public User getUser(@QiwiPathVariable Long id) {
         return userService.get(id);
     }
 
-    @Override
+//    @Override
     @QiwiRequestMapping(path = "/users/([0-9]+)", method = "DELETE")
     public void deleteUser(@QiwiPathVariable Long id) {
         userService.delete(id);
     }
 
-    @Override
+//    @Override
     @QiwiRequestMapping(path = "/users/([0-9]+)", method = "PUT")
     public User updateUser(@QiwiPathVariable Long id, @QiwiRequestBody User user) {
         return userService.update(id, user);
     }
 
-    @Override
+//    @Override
     @QiwiRequestMapping(path = "/users", method = "POST")
     public User createUser(@QiwiRequestBody User user) {
         return userService.create(user);
     }
-
 }

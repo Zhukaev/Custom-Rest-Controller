@@ -1,3 +1,4 @@
+/*
 package com.qiwi.user.controller;
 
 import com.qiwi.servlet.annotation.audit.Audit;
@@ -20,3 +21,4 @@ public interface UserController {
 
     User createUser(User user);
 }
+*/

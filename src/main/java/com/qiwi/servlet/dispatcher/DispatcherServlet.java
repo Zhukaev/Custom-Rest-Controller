@@ -51,7 +51,7 @@ public class DispatcherServlet extends HttpServlet {
             RequestMapping requestMapping = getRequestMapping(path);
             MethodDefinition methodDefinition = requestMapping.getMethodMap().get(methodName);
             Method invokeMethod = methodDefinition.getMethod();
-            Object args[] = getParam(requestMapping, methodDefinition, request);
+            Object args[] = getArgsArr(requestMapping, methodDefinition, request);
             Object obj = invokeMethod.invoke(methodDefinition.getObject(), args);
             setObjectToResponse(obj, HttpStatus.OK_200, response);
         } catch (InvocationTargetException e){
@@ -87,7 +87,7 @@ public class DispatcherServlet extends HttpServlet {
         return paramTypeArray;
     }
 
-    public Object[] getParam(RequestMapping requestMapping, MethodDefinition methodDefinition, HttpServletRequest request) throws ServletException, IOException {
+    public Object[] getArgsArr(RequestMapping requestMapping, MethodDefinition methodDefinition, HttpServletRequest request) throws ServletException, IOException {
         if (methodDefinition.getParams() == null) return null;
         Object[] argsArray = new Object[methodDefinition.getParams().size()];
         int i = 0;

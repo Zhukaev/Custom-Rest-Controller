@@ -19,21 +19,6 @@ public class ExceptionHandlerBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        /*if (bean.getClass().getAnnotation(QiwiGlobalExceptionHandler.class) != null) {
-            Method[] methods = bean.getClass().getDeclaredMethods();
-            for (Method method : methods) {
-                if (method.getAnnotation(QiwiExceptionHandler.class) != null){
-                    int httpStatus = method.getAnnotation(QiwiExceptionHandler.class).httpStatus();
-                    HandlerDefinition handler = new HandlerDefinition(method, httpStatus, bean);
-                    handlers.addHandler(method.getAnnotation(QiwiExceptionHandler.class).value(), handler);
-                }
-            }
-        }*/
-        return bean;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean.getClass().getAnnotation(QiwiGlobalExceptionHandler.class) != null) {
             Method[] methods = bean.getClass().getDeclaredMethods();
             for (Method method : methods) {
@@ -44,6 +29,21 @@ public class ExceptionHandlerBeanPostProcessor implements BeanPostProcessor {
                 }
             }
         }
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        /*if (bean.getClass().getAnnotation(QiwiGlobalExceptionHandler.class) != null) {
+            Method[] methods = bean.getClass().getDeclaredMethods();
+            for (Method method : methods) {
+                if (method.getAnnotation(QiwiExceptionHandler.class) != null){
+                    int httpStatus = method.getAnnotation(QiwiExceptionHandler.class).httpStatus();
+                    HandlerDefinition handler = new HandlerDefinition(method, httpStatus, bean);
+                    handlers.addHandler(method.getAnnotation(QiwiExceptionHandler.class).value(), handler);
+                }
+            }
+        }*/
         return bean;
     }
 }

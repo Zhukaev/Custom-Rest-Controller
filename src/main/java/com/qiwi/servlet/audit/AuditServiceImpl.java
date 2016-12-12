@@ -1,4 +1,5 @@
-package com.qiwi.servlet;
+/*
+package com.qiwi.servlet.audit;
 
 import org.springframework.stereotype.Service;
 
@@ -25,3 +26,4 @@ public class AuditServiceImpl implements AuditService {
     }
 
 }
+*/
